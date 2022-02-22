@@ -1,0 +1,25 @@
+.userContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(226, 226, 226);
+  justify-content: center;
+  align-items: center;
+  .singleUser {
+    display: flex;
+    border: 1px solid black;
+    width: 90%;
+    justify-content: space-around;
+    text-align: center;
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+
+      margin-bottom: 0.5rem;
+    }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+}

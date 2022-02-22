@@ -9,12 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.26.0",
+    "framer-motion": "^6.2.7",
     "next": "12.1.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "sass": "^1.49.8"
   },
   "devDependencies": {
     "eslint": "8.9.0",
     "eslint-config-next": "12.1.0"
-  }
+  },
+  "proxy": "https://khaja-ghar-management.herokuapp.com"
 }
