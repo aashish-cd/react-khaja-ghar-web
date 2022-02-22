@@ -73,7 +73,7 @@ const DLhelp = () => {
       </div>
 
       <div className={style.buttonContainer}>
-        <button onClick={handleSubmit}>Add user</button>
+        <button onClick={handleSubmit}>Add data</button>
       </div>
     </div>
   );
