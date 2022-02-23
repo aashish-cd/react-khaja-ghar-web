@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import style from '../styles/dl-help.module.scss';
+import { Watch } from 'react-loader-spinner';
 
 const DLhelp = () => {
   //title, date, body:{Ntitle, Nbody}, issuer
@@ -9,14 +10,29 @@ const DLhelp = () => {
   const [Ntitle, setNtitle] = useState('');
   const [Nbody, setNbody] = useState('');
   const [issuer, setIssuer] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState(false);
 
   const handleSubmit = async () => {
-    await axios.post('https://dl-help.herokuapp.com/api/dl-help', {
-      title,
-      date,
-      body: { Ntitle, Nbody },
-      issuer,
-    });
+    setLoading(true);
+    await axios
+      .post('https://dl-help.herokuapp.com/api/dl-help', {
+        title,
+        date,
+        body: { Ntitle, Nbody },
+        issuer,
+      })
+      .catch((err) => setAlert(true));
+    setTitle('');
+    setDate('');
+    setNtitle('');
+    setNbody('');
+    setIssuer('');
+
+    setLoading(false);
+    setTimeout(() => {
+      setAlert(false);
+    }, 1500);
   };
 
   return (
@@ -73,8 +89,12 @@ const DLhelp = () => {
       </div>
 
       <div className={style.buttonContainer}>
-        <button onClick={handleSubmit}>Add data</button>
+        <button onClick={handleSubmit}>
+          {loading ? 'Adding...' : 'Add user'}
+        </button>
       </div>
+      {alert && <p>Error found, please fill valid input in all fields</p>}
+      {loading && <Watch color='#000' height={80} width={80} />}
     </div>
   );
 };
