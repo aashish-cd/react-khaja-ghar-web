@@ -11,6 +11,7 @@ const DLhelp = () => {
   const [Nbody, setNbody] = useState('');
   const [issuer, setIssuer] = useState('');
   const [loading, setLoading] = useState(false);
+  const [source, setSource] = useState('');
   const [alert, setAlert] = useState(false);
 
   const handleSubmit = async () => {
@@ -21,6 +22,7 @@ const DLhelp = () => {
         date,
         body: { Ntitle, Nbody },
         issuer,
+        source,
       })
       .catch((err) => setAlert(true));
     setTitle('');
@@ -28,11 +30,12 @@ const DLhelp = () => {
     setNtitle('');
     setNbody('');
     setIssuer('');
+    setSource('');
 
     setLoading(false);
     setTimeout(() => {
       setAlert(false);
-    }, 1500);
+    }, 3000);
   };
 
   return (
@@ -85,6 +88,16 @@ const DLhelp = () => {
           id='issuer'
           value={issuer}
           onChange={(e) => setIssuer(e.target.value)}
+        />
+      </div>
+      <div className={style.inputContainer}>
+        <label htmlFor='source'>Enter source</label>
+        <input
+          type='text'
+          name='source'
+          id='source'
+          value={source}
+          onChange={(e) => setSource(e.target.value)}
         />
       </div>
 
