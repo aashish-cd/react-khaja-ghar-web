@@ -103,7 +103,7 @@ const DLhelp = () => {
 
       <div className={style.buttonContainer}>
         <button onClick={handleSubmit}>
-          {loading ? 'Adding...' : 'Add user'}
+          {loading ? 'Adding...' : 'Add data'}
         </button>
       </div>
       {alert && <p>Error found, please fill valid input in all fields</p>}
